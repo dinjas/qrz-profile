@@ -19,6 +19,12 @@ Running live on QRZ, and collapsing to a single column on narrow screens:
 - `preview.html` — local preview wrapper
 - `.context/` — project notes and AI-assistant guidance
 
+## Using it on QRZ
+
+QRZ's bio editor is a WYSIWYG editor by default, which will mangle raw HTML. To
+paste this in, click the **Source** button in the editor toolbar first, then
+paste the full contents of `profile.html` and save.
+
 ## AI Context
 
 The `.context/` directory contains project notes and guidance for AI coding
