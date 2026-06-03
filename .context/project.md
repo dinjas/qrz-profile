@@ -8,7 +8,6 @@ A hand-crafted HTML/CSS snippet for Jason's (K7BPM) QRZ.com profile page. The fi
 
 ## File structure
 - `profile.html` — the profile snippet (paste into QRZ editor)
-- `old-profile.html` — previous version, kept for reference
 - `preview.html` — browser preview wrapper (loads profile.html via fetch)
 - `.context/` — project notes for AI assistants
 
