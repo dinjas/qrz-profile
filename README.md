@@ -19,6 +19,3 @@ Then open [http://localhost:8000/preview.html](http://localhost:8000/preview.htm
 ## Disclaimer
 
 Unofficial. Not affiliated with or endorsed by QRZ LLC / qrz.com.
-
-This profile content is shared openly — feel free to use it as a starting point
-for your own.
