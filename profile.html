@@ -1,0 +1,300 @@
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.profile { padding: 1rem 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+.callsign-header {
+  background: #f0f0eb;
+  border: 0.5px solid #d0d0c8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.call-badge {
+  background: #fff;
+  border: 0.5px solid #bbbbb3;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  text-align: center;
+  min-width: 130px;
+}
+.call-sign {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 28px;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 3px;
+}
+.call-sub {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  color: #666;
+  letter-spacing: 1px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.header-info { flex: 1; min-width: 200px; }
+.header-loc { font-size: 13px; color: #333; margin-bottom: 10px; }
+.status-row { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
+.pill {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 0.5px solid;
+  letter-spacing: 0.5px;
+  font-family: "Courier New", Courier, monospace;
+}
+.pill-green  { background: #EAF3DE; color: #27500A; border-color: #3B6D11; }
+.pill-blue   { background: #E6F1FB; color: #0C447C; border-color: #185FA5; }
+.pill-amber  { background: #FAEEDA; color: #633806; border-color: #854F0B; }
+.pill-teal   { background: #E1F5EE; color: #085041; border-color: #0F6E56; }
+.pill-pink   { background: #FBEAF0; color: #4B1528; border-color: #993556; }
+
+.qsl-bar {
+  background: #f0f0eb;
+  border: 0.5px solid #d0d0c8;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.qsl-dot { width: 8px; height: 8px; border-radius: 50%; background: #639922; flex-shrink: 0; }
+.qsl-text { color: #333; }
+.qsl-text strong { color: #111; font-weight: 500; }
+
+.k7bpm-section { margin-bottom: 1.25rem; }
+.section-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #444;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  padding-left: 2px;
+}
+.card {
+  background: #fff;
+  border: 0.5px solid #d0d0c8;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.story { font-size: 14px; line-height: 1.9; color: #333; }
+.story p { margin-bottom: 0.9rem; }
+.story p:last-child { margin-bottom: 0; }
+.story a { color: #111; font-weight: 500; text-decoration: none; border-bottom: 0.5px solid #bbb; }
+.story a:hover { border-bottom-color: #555; }
+.story strong { color: #111; font-weight: 500; }
+.story em { color: #444; font-style: italic; }
+.story .hello { font-size: 15px; font-weight: 500; color: #111; }
+.story .callsign-inline {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 1px;
+}
+.aside {
+  border-left: 2px solid #ccc;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+  line-height: 1.7;
+  background: #f7f7f2;
+  border-radius: 0 8px 8px 0;
+}
+.aside a { color: #555; border-bottom: 0.5px solid #aaa; text-decoration: none; }
+.aside strong { color: #333; font-weight: 600; font-style: normal; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
+@media (max-width: 520px) {
+  .two-col { grid-template-columns: 1fr; }
+  .call-badge { min-width: unset; width: 100%; }
+}
+
+.vol-list { list-style: none; }
+.vol-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 0.6rem 0;
+  border-bottom: 0.5px solid #e8e8e0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.vol-item:last-child { border-bottom: none; padding-bottom: 0; }
+.vol-dash { color: #777; font-family: "Courier New", monospace; flex-shrink: 0; padding-top: 1px; }
+.vol-text { color: #333; }
+.vol-text a { color: #111; font-weight: 500; text-decoration: none; border-bottom: 0.5px solid #ddd; }
+.vol-text a:hover { border-bottom-color: #888; }
+.vol-text em { color: #555; font-style: normal; font-size: 11px; font-family: "Courier New", monospace; }
+
+.past-divider { display: flex; align-items: center; gap: 8px; margin: 0.75rem 0 0.5rem; }
+.past-divider-label {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #555;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.past-divider-line { flex: 1; height: 0.5px; background: #e0e0d8; }
+.past-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+  border-bottom: 0.5px solid #e8e8e0;
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+.past-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+.member-grid { display: flex; flex-direction: column; }
+.member-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 0.5px solid #e8e8e0;
+  font-size: 13px;
+  gap: 8px;
+}
+.member-item:last-child { border-bottom: none; }
+.member-item a { color: #111; text-decoration: none; font-weight: 500; }
+.member-item a:hover { text-decoration: underline; }
+.member-badge {
+  font-size: 10px;
+  font-family: "Courier New", Courier, monospace;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: #f0f0eb;
+  color: #444;
+  border: 0.5px solid #d0d0c8;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.sig-block { text-align: right; padding-top: 0.25rem; }
+.sig { font-family: "Courier New", Courier, monospace; font-size: 14px; color: #666; letter-spacing: 1px; }
+.sig-sub { font-size: 12px; color: #aaa; margin-top: 4px; }
+</style>
+
+<div class="profile">
+
+  <div class="callsign-header">
+    <div class="call-badge">
+      <div class="call-sign">K7BPM</div>
+      <div class="call-sub">CN85tu &middot; SW WASHINGTON</div>
+    </div>
+    <div class="header-info">
+      <div class="header-loc">Midway between Portland, OR and the crater of Mt. St. Helens</div>
+      <div class="status-row">
+        <span class="pill pill-green">LoTW &#10003;</span>
+        <span class="pill pill-green">QRZ &#10003;</span>
+        <span class="pill pill-green">Buro &#10003;</span>
+        <span class="pill pill-blue">HF &middot; VHF &middot; UHF</span>
+        <span class="pill pill-teal">CW in progress</span>
+        <span class="pill pill-amber">Life Member ARRL</span>
+        <span class="pill pill-amber">Life Member CCARC</span>
+        <span class="pill pill-pink">Dog Lover</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="qsl-bar">
+    <div class="qsl-dot"></div>
+    <span class="qsl-text"><strong>QSL info:</strong> I upload to LoTW &amp; QRZ, usually within a day of QSO. Paper QSLs welcome via the <a href="https://wvdxc.org/history-of-the-arrl-7th-area-incoming-qsl-bureau/" style="color:inherit;border-bottom:0.5px solid #aaa;text-decoration:none;">7th Area Incoming QSL Bureau</a> or Direct.</span>
+  </div>
+
+  <div class="k7bpm-section">
+    <div class="section-label">Getting here</div>
+    <div class="card">
+      <div class="story">
+        <p><span class="hello">Hello!</span></p>
+
+        <p>My ham journey started in 2018, when a colleague and friend at work got my interest piqued in using ham radio for <strong>emergency preparedness</strong>. I decided to check it out, ended up taking a class offered through the local club (<a href="http://w7aia.org">Clark County Amateur Radio Club, W7AIA</a>), and received my <strong>Technician License in Nov of 2018</strong> as <span class="callsign-inline">KJ7BSP</span>.</p>
+
+        <p>Not quite sure what to do once I had it, I sat on my license for almost a year before deciding to attend a club meeting. I was quite surprised to show up at that first meeting and discover so many people coming together to share their love of amateur radio.</p>
+
+        <p>At the club meetings, I was encouraged to start participating in the local VHF/UHF nets, and had several conversations with club members who hinted at <em>the glory of HF</em>.</p>
+
+        <p>So, I checked out three of the local VHF/UHF nets and discovered one was for the <a href="https://ccareswa.org">Clark County ARES/RACES group</a>. I was curious about their mission, so looked into it, attended a meeting in the latter half of 2019, and soon volunteered to become a member. I now serve on the tactical team loosely based in <strong>North Clark County, WA</strong>.</p>
+
+        <p>Another of the local nets was for the <a href="https://eyewarn.net">EYEWARN group</a>. I started participating in it regularly as well, believed in what they are doing, and became an <strong>EYEWARN net control operator in mid-2020</strong>.</p>
+
+        <p>Harkening back to the hints of HF glory, I soon found myself studying the General License manual and <strong>tested for that in Feb of 2020</strong>. I assumed the vanity callsign <span class="callsign-inline">K7BPM</span> in Apr of 2021.</p>
+
+        <p>Ham radio has also given me the opportunity to volunteer in our local food drive. I have been able to participate in the regional <a href="https://walkandknock.org">Walk and Knock Food Drive</a> since 2019 as a volunteer communicator. The event is in early December and really does a lot of good for the local food bank.</p>
+
+        <p>I also develop the website for the <a href="https://lctota.org">Lewis &amp; Clark Trail on the Air special event</a>. June 2022 was its inaugural year. 2026 will be our fifth go round.</p>
+
+        <p>At home, I currently run an <strong>Icom ID-5100</strong> through a <strong>Comet CX-333</strong> for my VHF/UHF base station. While my base radio is only a dual band, I have a <strong>Yaesu VX-6R</strong> tri-band HT that I occasionally use on 220.</p>
+
+        <p>I obtained an <strong>Icom 7300</strong> in Dec 2021 and have been exploring many of the digital modes and continuing to learn as much as I can.</p>
+
+        <div class="aside">In June 2023 I finished the &ldquo;Intermediate&rdquo; level CWOps course through the <a href="https://cwops.org/cw-academy/">CW Academy</a> &mdash; shout out to my advisors: Beginner Course: <strong><a href="https://www.qrz.com/db/KD2KW">KD2KW</a> &amp; <a href="https://www.qrz.com/db/AC5EZ">AC5EZ</a></strong>, Fundamental Course: <strong><a href="https://www.qrz.com/db/K1DW">K1DW</a> &amp; <a href="https://www.qrz.com/db/K1EBY">K1EBY</a></strong>, and Intermediate Course: <strong><a href="https://www.qrz.com/db/K7MOZ">K7MOZ</a></strong> &mdash; you are all awesome. Life got busy and I set it aside for a while, but in 2026 I&rsquo;m back at it. I&rsquo;ve made a public goal of 100 CW QSOs this year. I had exactly 2 lifetime CW QSOs to my name prior to the goal &mdash; plenty of room to grow.</div>
+
+        <p>I've got several other antenna projects in the works, needing various levels of elbow grease.</p>
+
+        <p>Outside of radio stuff &mdash; I'm not retired yet, and work as a web application software developer (primarily <strong>Ruby on Rails</strong>). At home, I like to tinker on things and spend time with my wife and dogs.</p>
+
+        <p>Hope to catch you on the air!</p>
+
+        <p><span class="callsign-inline">73 de K7BPM</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="k7bpm-section">
+      <div class="section-label">How I volunteer</div>
+      <div class="card">
+        <ul class="vol-list">
+          <li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Vice president, <a href="https://w7aia.org">Clark County ARC</a></span></li>
+          <li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">North County team lead, <a href="https://ccareswa.org">Clark County ARES/RACES</a></span></li>
+          <li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Net control, <a href="https://eyewarn.net">EYEWARN program</a></span></li>
+          <li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Web developer, <a href="https://lctota.org">Lewis &amp; Clark Trail on the Air</a> &mdash; the special event sponsored by the CCARC</span></li>
+          <li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Front-end webmaster, <a href="https://seapac.org">SEA-PAC Ham Radio Convention</a>, Seaside OR</span></li>
+          <li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">&ldquo;I&rdquo; section sorter, <a href="https://wvdxc.org/history-of-the-arrl-7th-area-incoming-qsl-bureau/">7th Area Incoming QSL Bureau</a></span></li>
+          <!--li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Radio communicator, <a href="https://walkandknock.org">Walk and Knock Food Drive</a> &mdash; a local food bank event I look forward to every December</span></li-->
+          <li class="vol-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Public event support: parades, races, relays, runs, walks, and endurance endeavors throughout the year</span></li>
+        </ul>
+        <div class="past-divider">
+          <span class="past-divider-label">Past roles</span>
+          <span class="past-divider-line"></span>
+        </div>
+        <ul class="vol-list">
+          <li class="past-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Secretary, <a href="https://w7aia.org">Clark County ARC</a> <em>(2024&ndash;2025)</em></span></li>
+          <li class="past-item"><span class="vol-dash">&mdash;</span><span class="vol-text">Technical director, <a href="https://w7aia.org">Clark County ARC</a> <em>(2022&ndash;2023)</em></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="k7bpm-section">
+      <div class="section-label">Clubs &amp; organizations</div>
+      <div class="card">
+        <div class="member-grid">
+          <div class="member-item"><a href="https://arrl.org">ARRL</a><span class="member-badge">Life</span></div>
+          <div class="member-item"><a href="https://w7aia.org">Clark County ARC</a><span class="member-badge">Life</span></div>
+          <div class="member-item"><a href="https://ccareswa.org">Clark County ARES/RACES</a></div>
+          <div class="member-item"><a href="https://www.w7aia.org/groups.html#digital">Clark County Digital Group</a></div>
+          <div class="member-item"><a href="https://www.qrz.com/db/N7HR">Vancouver Contest Club</a></div>
+          <div class="member-item"><a href="https://wvdxc.org">Willamette Valley DX Club</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

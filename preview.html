@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K7BPM QRZ Profile Preview</title>
+  <style>
+    body {
+      background: #d8d8d8;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+    .qrz-frame {
+      background: #fff;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      border: 1px solid #bbb;
+    }
+    .preview-banner {
+      background: #fffbe6;
+      border: 1px solid #e6c800;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-size: 12px;
+      color: #7a6000;
+      margin-bottom: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="qrz-frame">
+    <div class="preview-banner">Preview mode &mdash; approximates QRZ profile column layout</div>
+    <div id="profile"></div>
+  </div>
+  <script>
+    fetch('profile.html')
+      .then(r => r.text())
+      .then(html => document.getElementById('profile').innerHTML = html);
+  </script>
+</body>
+</html>
