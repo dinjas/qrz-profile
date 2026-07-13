@@ -50,9 +50,6 @@
 }
 .pill-green  { background: #EAF3DE; color: #27500A; border-color: #3B6D11; }
 .pill-blue   { background: #E6F1FB; color: #0C447C; border-color: #185FA5; }
-.pill-amber  { background: #FAEEDA; color: #633806; border-color: #854F0B; }
-.pill-teal   { background: #E1F5EE; color: #085041; border-color: #0F6E56; }
-.pill-pink   { background: #FBEAF0; color: #4B1528; border-color: #993556; }
 
 .qsl-bar {
   background: #f0f0eb;
@@ -113,7 +110,8 @@
   background: #f7f7f2;
   border-radius: 0 8px 8px 0;
 }
-.aside a { color: #555; border-bottom: 0.5px solid #aaa; text-decoration: none; }
+.aside a { color: #555; border-bottom: 0.5px solid #bbb; text-decoration: none; }
+.aside a:hover { border-bottom-color: #555; }
 .aside strong { color: #333; font-weight: 600; font-style: normal; }
 
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem; }
@@ -135,8 +133,8 @@
 .vol-item:last-child { border-bottom: none; padding-bottom: 0; }
 .vol-dash { color: #777; font-family: "Courier New", monospace; flex-shrink: 0; padding-top: 1px; }
 .vol-text { color: #333; }
-.vol-text a { color: #111; font-weight: 500; text-decoration: none; border-bottom: 0.5px solid #ddd; }
-.vol-text a:hover { border-bottom-color: #888; }
+.vol-text a { color: #111; font-weight: 500; text-decoration: none; border-bottom: 0.5px solid #bbb; }
+.vol-text a:hover { border-bottom-color: #555; }
 .vol-text em { color: #555; font-style: normal; font-size: 11px; font-family: "Courier New", monospace; }
 
 .past-divider { display: flex; align-items: center; gap: 8px; margin: 0.75rem 0 0.5rem; }
@@ -171,8 +169,8 @@
   gap: 8px;
 }
 .member-item:last-child { border-bottom: none; }
-.member-item a { color: #111; text-decoration: none; font-weight: 500; }
-.member-item a:hover { text-decoration: underline; }
+.member-item a { color: #111; text-decoration: none; font-weight: 500; border-bottom: 0.5px solid #bbb; }
+.member-item a:hover { border-bottom-color: #555; }
 .member-badge {
   font-size: 10px;
   font-family: "Courier New", Courier, monospace;
@@ -204,17 +202,17 @@
         <span class="pill pill-green">QRZ &#10003;</span>
         <span class="pill pill-green">Buro &#10003;</span>
         <span class="pill pill-blue">HF &middot; VHF &middot; UHF</span>
-        <span class="pill pill-teal">CW in progress</span>
-        <span class="pill pill-amber">Life Member ARRL</span>
-        <span class="pill pill-amber">Life Member CCARC</span>
-        <span class="pill pill-pink">Dog Lover</span>
+        <span class="pill pill-blue">CW in progress</span>
+        <span class="pill pill-blue">Life Member ARRL</span>
+        <span class="pill pill-blue">Life Member CCARC</span>
+        <span class="pill pill-blue">Dog Lover</span>
       </div>
     </div>
   </div>
 
   <div class="qsl-bar">
     <div class="qsl-dot"></div>
-    <span class="qsl-text"><strong>QSL info:</strong> I upload to LoTW &amp; QRZ, usually within a day of QSO. Paper QSLs welcome via the <a href="https://wvdxc.org/history-of-the-arrl-7th-area-incoming-qsl-bureau/" style="color:inherit;border-bottom:0.5px solid #aaa;text-decoration:none;">7th Area Incoming QSL Bureau</a> or Direct.</span>
+    <span class="qsl-text"><strong>QSL info:</strong> I upload to LoTW &amp; QRZ, usually within a day of QSO. Paper QSLs welcome via the <a href="https://wvdxc.org/history-of-the-arrl-7th-area-incoming-qsl-bureau/" style="color:inherit;border-bottom:0.5px solid #bbb;text-decoration:none;">7th Area Incoming QSL Bureau</a> or Direct.</span>
   </div>
 
   <div class="k7bpm-section">
